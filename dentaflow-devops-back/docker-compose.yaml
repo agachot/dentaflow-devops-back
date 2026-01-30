@@ -5,12 +5,18 @@ services:
     image: mcr.microsoft.com/dotnet/aspnet:9.0
     container_name: dentaflow-back
     ports:
-      - "8080:8080"
+      - "8081:8081"
     volumes:
       - ./workspace/publish:/app
+    networks:
+      - dentaflow-network
+    build:
+      context: ./dentaflow-devops-back
     working_dir: /app
     command: ["dotnet", "dentaflow-devops-back.dll"]
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_URLS: http://+:8081
     restart: unless-stopped
+networks:
+  dentaflow-network:

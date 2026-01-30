@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dentaflow-devops-back")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3a8ebbde236618e65512dbe4d76376f8411a1bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9cb2309fc16b95fe9a2ce8489c05f0247897b35")]
 [assembly: System.Reflection.AssemblyProductAttribute("dentaflow-devops-back")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dentaflow-devops-back")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
