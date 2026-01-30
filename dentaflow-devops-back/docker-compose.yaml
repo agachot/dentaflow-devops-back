@@ -1,0 +1,16 @@
+version: "3.9"
+ 
+services:
+  backend:
+    image: mcr.microsoft.com/dotnet/aspnet:9.0
+    container_name: dentaflow-back
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./workspace/publish:/app
+    working_dir: /app
+    command: ["dotnet", "dentaflow-devops-back.dll"]
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+    restart: unless-stopped
