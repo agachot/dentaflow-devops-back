@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+ 
+    stages {
+ 
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+ 
+        stage('Restore') {
+            steps {
+                sh 'dotnet restore'
+            }
+        }
+ 
+        stage('Build') {
+            steps {
+                sh 'dotnet build -c Release'
+            }
+        }
+ 
+        stage('Test') {
+            steps {
+                sh 'dotnet test -c Release'
+            }
+        }
+ 
+        stage('Publish') {
+            steps {
+                sh '''
+                rm -rf workspace/publish
+                dotnet publish -c Release -o workspace/publish
+                '''
+            }
+        }
+ 
+        stage('Deploy (Docker Compose)') {
+            steps {
+                sh '''
+                docker-compose down || true
+                docker-compose up -d
+                '''
+            }
+        }
+    }
+ 
+    post {
+        success {
+            echo 'Backend déployé avec succès'
+        }
+        failure {
+            echo 'Erreur dans la pipeline backend'
+        }
+    }
+}
